@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <title>Elegant-Classics - Gallery</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: lightgrey;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        header {
+            background-color: #597D35;
+            padding: 10px 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #fff;
+        }
+        header a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        header a img {
+            height: 100px;
+            width: 100px;
+            margin-right: 10px;
+        }
+        header .nav__links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 20px;
+        }
+        header .nav__links li {
+            margin: 0;
+        }
+        header .nav__links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        header .nav__links a:hover {
+            color: #BC9F8B;
+        }
+        header .btn {
+            background-color: #BC9F8B;
+            border: none;
+            color: #fff;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        header .btn:hover {
+            background-color: #A37F6C;
+        }
+        .container {
+            display: flex;
+            padding: 20px;
+        }
+        .sidebar {
+            width: 20%;
+            background-color: #B5CFB7;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-right: 20px;
+        }
+        .sidebar h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .sidebar ul li {
+            margin-bottom: 10px;
+        }
+        .sidebar ul li a {
+            color: #333;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .sidebar ul li a:hover {
+            color: #BC9F8B;
+        }
+        .main-content {
+            width: 80%;
+        }
+        .section__header {
+            font-size: 28px;
+            text-align: center;
+            margin: 20px 0;
+            color: #333;
+        }
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        .car {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 20px 0;
+            overflow: hidden;
+            width: 300px;
+            color: #333;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .car:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+        .car img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .car-details {
+            padding: 15px;
+        }
+        .car-details h2 {
+            margin: 10px 0;
+            font-size: 24px;
+            color: #BC9F8B;
+        }
+        .car-details p {
+            margin: 5px 0;
+            font-size: 16px;
+        }
+        .car-details .price {
+            color: #BC9F8B;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+        }
+        footer h4 {
+            margin: 10px 0;
+            color: #BC9F8B;
+        }
+        footer .footer__links {
+            list-style: none;
+            padding: 0;
+            color: aquamarine;
+        }
+        footer .footer__links li {
+            margin: 5px 0;
+        }
+        footer .footer__links a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        footer .footer__links a:hover {
+            color: #ff5a5f;
+        }
+        footer .footer__bar {
+            border-top: 1px solid #ddd;
+            padding-top: 20px;
+            margin-top: 20px;
+        }
+        footer .footer__socials {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        footer .footer__socials a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 24px;
+            transition: color 0.3s;
+        }
+        footer .footer__socials a:hover {
+            color: #ff5a5f;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav__header">
+                <div class="nav__logo">
+                    <a href="index.html">
+                        <img src="Untitled-removebg-preview.png" alt="Elegant Classics Logo"> Elegant Classics
+                    </a>
+                </div>
+                <div class="nav__menu__btn" id="menu-btn">
+                    <i class="ri-menu-line"></i>
+                </div>
+            </div>
+            <ul class="nav__links" id="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="gallery.html">Rent</a></li>
+                <li><a href="#service">Services</a></li>
+                <li><a href="gallery.html">Ride</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li class="nav__links__btn">
+                    <a href="signup.html" class="btn"></a>Sign Up</button>
+                </li>
+                <li class="nav__links__btn">
+                    <a href="signin.html" class="btn"></a>Sign In</button>
+                </li>
+            </ul>
+            <div class="nav__btns">
+                <a href="signup.html" class="btn btn__primary">Sign Up</a>
+                <a href="signin.html" class="btn btn__secondary">Sign In</a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="sidebar">
+            <h2>Popular Searches</h2>
+            <ul>
+                <li><a href="#">Ford Mustang</a></li>
+                <li><a href="#">Chevrolet Corvette</a></li>
+                <li><a href="#">Chevrolet Camaro</a></li>
+                <li><a href="#">Chevrolet C10</a></li>
+                <li><a href="#">Chevrolet Impala</a></li>
+                <li><a href="#">Chevrolet Chevelle</a></li>
+                <li><a href="#">Chevrolet Bel Air</a></li>
+            </ul>
+            <h2>Browse by Category</h2>
+            <ul>
+                <li><a href="#">25,000 and Up</a></li>
+                <li><a href="#">Antiques / Pre-War</a></li>
+                <li><a href="#">Autolot / Auctions</a></li>
+            </ul>
+        </div>
+
+        <div class="main-content">
+            <section class="section__container" id="car-gallery">
+                <h2 class="section__header">Our Classic Cars</h2>
+                <div class="gallery">
+                    <div class="car">
+                        <img src="mustang.jpg" alt="1967 Ford Mustang">
+                        <div class="car-details">
+                            <h2>1967 Ford Mustang</h2>
+                            <p>Engine: V8</p>
+                            <p>Transmission: Manual</p>
+                            <p>Color: Red</p>
+                            <p class="price">Rs 38,000/day</p>
+                        </div>
+                    </div>
+                    <div class="car">
+                        <img src="1957-chevrolet-bel-air.jpeg" alt="1957 Chevrolet Bel Air">
+                        <div class="car-details">
+                            <h2>1957 Chevrolet Bel Air</h2>
+                            <p>Engine: V8</p>
+                            <p>Transmission: Automatic</p>
+                            <p>Color: Blue</p>
+                            <p class="price">Rs 45,000/day</p>
+                        </div>
+                    </div>
+                    <div class="car">
+                        <img src="shelby.jpg" alt="1965 Shelby Cobra">
+                        <div class="car-details">
+                            <h2>1965 Shelby Cobra</h2>
+                            <p>Engine: V8</p>
+                            <p>Transmission: Manual</p>
+                            <p>Color: Black</p>
+                            <p class="price">Rs 35,000/day</p>
+                        </div>
+                    </div>
+                    <div class="car">
+                        <img src="dodge.jpeg" alt="1969 Dodge Charger">
+                        <div class="car-details">
+                            <h2>1969 Dodge Charger</h2>
+                            <p>Engine: V8</p>
+                            <p>Transmission: Automatic</p>
+                            <p>Color: Orange</p>
+                            <p class="price">Rs 25,000/day</p>
+                        </div>
+                    </div>
+                    <div class="car">
+                        <img src="corvette.webp" alt="1965 Chevrolet Corvette">
+                        <div class="car-details">
+                            <h2>1965 Chevrolet Corvette</h2>
+                            <p>Engine: V8</p>
+                            <p>Transmission: Manual</p>
+                            <p>Color: Blue</p>
+                            <p class="price">Rs 60,000/day</p>
+                        </div>
+                    </div>
+                    <div class="car">
+                        <img src="camaro.jpeg" alt="1969 Chevrolet Camaro">
+                        <div class="car-details">
+                            <h2>1969 Chevrolet Camaro</h2>
+                            <p>Engine: V8</p>
+                            <p>Transmission: Automatic</p>
+                            <p>Color: Orange</p>
+                            <p class="price">Rs 50,000/day</p>
+                        </div>
+                    </div>
+                    <div class="car">
+                        <img src="c10.webp" alt="1972 Chevrolet C10">
+                        <div class="car-details">
+                            <h2>1972 Chevrolet C10</h2>
+                            <p>Engine: V8</p>
+                            <p>Transmission: Manual</p>
+                            <p>Color: Black</p>
+                            <p class="price">Rs 30,000/day</p>
+                        </div>
+                    </div>
+                    <div class="car">
+                        <img src="impala.jpeg" alt="1964 Chevrolet Impala">
+                        <div class="car-details">
+                            <h2>1964 Chevrolet Impala</h2>
+                            <p>Engine: V8</p>
+                            <p>Transmission: Automatic</p>
+                            <p>Color: White</p>
+                            <p class="price">Rs 45,000/day</p>
+                        </div>
+                    </div>
+                    <div class="car">
+                        <img src="chevelle.jpeg" alt="1970 Chevrolet Chevelle">
+                        <div class="car-details">
+                            <h2>1970 Chevrolet Chevelle</h2>
+                            <p>Engine: V8</p>
+                            <p>Transmission: Automatic</p>
+                            <p>Color: Green</p>
+                            <p class="price">Rs 55,000/day</p>
+                        </div>
+                    </div>
+                    <div class="car">
+                        <img src="bel aior.jpg" alt="1957 Chevrolet Bel Air">
+                        <div class="car-details">
+                            <h2>1957 Chevrolet Bel Air</h2>
+                            <p>Engine: V8</p>
+                            <p>Transmission: Manual</p>
+                            <p>Color: Turquoise</p>
+                            <p class="price">Rs 65,000/day</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <footer>
+        <h4>Elegant Classics</h4>
+        <ul class="footer__links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+        <div class="footer__bar">
+            <p>&copy; 2024 Elegant Classics. All rights reserved.</p>
+            <ul class="footer__socials">
+                <li><a href="#"><i class="ri-facebook-fill"></i></a></li>
+                <li><a href="#"><i class="ri-twitter-fill"></i></a></li>
+                <li><a href="#"><i class="ri-instagram-fill"></i></a></li>
+            </ul>
+        </div>
+    </footer>
+    <script>
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    
+        // Lightbox Functionality
+        const lightbox = document.createElement('div');
+        lightbox.style.position = 'fixed';
+        lightbox.style.top = '0';
+        lightbox.style.left = '0';
+        lightbox.style.width = '100%';
+        lightbox.style.height = '100%';
+        lightbox.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+        lightbox.style.display = 'none';
+        lightbox.style.alignItems = 'center';
+        lightbox.style.justifyContent = 'center';
+        lightbox.style.zIndex = '1000';
+        lightbox.innerHTML = '<img id="lightbox-image" style="max-width: 90%; max-height: 90%;" />';
+        document.body.appendChild(lightbox);
+    
+        document.querySelectorAll('.car img').forEach(img => {
+            img.addEventListener('click', function() {
+                document.getElementById('lightbox-image').src = this.src;
+                lightbox.style.display = 'flex';
+            });
+        });
+    
+        lightbox.addEventListener('click', function() {
+            lightbox.style.display = 'none';
+        });
+    
+        // Back-to-Top Button
+        const backToTopBtn = document.createElement('button');
+        backToTopBtn.textContent = '↑';
+        backToTopBtn.style.position = 'fixed';
+        backToTopBtn.style.bottom = '20px';
+        backToTopBtn.style.right = '20px';
+        backToTopBtn.style.padding = '10px';
+        backToTopBtn.style.backgroundColor = '#BC9F8B';
+        backToTopBtn.style.color = '#fff';
+        backToTopBtn.style.border = 'none';
+        backToTopBtn.style.borderRadius = '5px';
+        backToTopBtn.style.cursor = 'pointer';
+        backToTopBtn.style.display = 'none';
+        document.body.appendChild(backToTopBtn);
+    
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 200) {
+                backToTopBtn.style.display = 'block';
+            } else {
+                backToTopBtn.style.display = 'none';
+            }
+        });
+    
+        backToTopBtn.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <title>Elegant-Classics - Gallery</title>
+    <style>
+        /* Basic Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: lightgrey;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        header {
+            background-color: #B5CFB7;
+            padding: 10px 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #fff;
+        }
+
+        header a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+
+        header a img {
+            height: 100px;
+            width: 100px;
+            margin-right: 10px;
+        }
+
+        header .nav__links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        header .nav__links li {
+            margin: 0;
+        }
+
+        header .nav__links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        header .nav__links a:hover {
+            color: #BC9F8B;
+        }
+
+        header .btn {
+            background-color: #BC9F8B;
+            border: none;
+            color: #fff;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        header .btn:hover {
+            background-color: #A37F6C;
+        }
+
+        header .nav__menu__btn {
+            display: none;
+            font-size: 28px;
+            cursor: pointer;
+        }
+
+        .container {
+            display: flex;
+            padding: 20px;
+        }
+
+        .sidebar {
+            width: 20%;
+            background-color: #B5CFB7;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-right: 20px;
+        }
+
+        .sidebar h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar ul li {
+            margin-bottom: 10px;
+        }
+
+        .sidebar ul li a {
+            color: #333;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .sidebar ul li a:hover {
+            color: #BC9F8B;
+        }
+
+        .main-content {
+            width: 80%;
+        }
+
+        .section__header {
+            font-size: 28px;
+            text-align: center;
+            margin: 20px 0;
+            color: #333;
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .car {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 20px 0;
+            overflow: hidden;
+            width: 300px;
+            color: #333;
+            transition: transform 0.3s, box-shadow 0.3s;
+            opacity: 0;
+        }
+
+        .car.fade-in {
+            opacity: 1;
+        }
+
+        .car:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .car img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .car-details {
+            padding: 15px;
+        }
+
+        .car-details h2 {
+            margin: 10px 0;
+            font-size: 24px;
+            color: #BC9F8B;
+        }
+
+        .car-details p {
+            margin: 5px 0;
+            font-size: 16px;
+        }
+
+        .car-details .price {
+            color: #BC9F8B;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        footer h4 {
+            margin: 10px 0;
+            color: #BC9F8B;
+        }
+
+        footer .footer__links {
+            list-style: none;
+            padding: 0;
+            color: aquamarine;
+        }
+
+        footer .footer__links li {
+            margin: 5px 0;
+        }
+
+        footer .footer__links a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        footer .footer__links a:hover {
+            color: #ff5a5f;
+        }
+
+        footer .footer__bar {
+            border-top: 1px solid #ddd;
+            padding-top: 20px;
+            margin-top: 20px;
+        }
+
+        footer .footer__socials {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        footer .footer__socials a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 24px;
+            transition: color 0.3s;
+        }
+
+        footer .footer__socials a:hover {
+            color: #ff5a5f;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            header {
+                flex-wrap: wrap;
+            }
+
+            header .nav__menu__btn {
+                display: block;
+            }
+
+            header .nav__links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                text-align: center;
+                background-color: #B5CFB7;
+                padding: 20px 0;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            }
+
+            header .nav__links.show {
+                display: flex;
+            }
+
+            header .nav__links li {
+                margin: 10px 0;
+            }
+
+            header .nav__btns {
+                display: none;
+            }
+
+            .container {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+
+            .main-content {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header .nav__links a {
+                font-size: 18px;
+            }
+
+            .section__header {
+                font-size: 24px;
+            }
+
+            .car {
+                width: 100%;
+            }
+
+            header .nav__menu__btn {
+                font-size: 32px;
+            }
+
+            header .nav__links a {
+                padding: 10px 0;
+                display: block;
+            }
+        }
+
+        /* Carousel Styles */
+        .carousel {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            height: 300px;
+        }
+
+        .carousel-images {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-images img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        #prev-btn, #next-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        #prev-btn {
+            left: 10px;
+        }
+
+        #next-btn {
+            right: 10px;
+        }
+
+        /* Scroll Indicator */
+        .scroll-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 4px;
+            background-color: #BC9F8B;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="#"><img src="logo.png" alt="Elegant-Classics Logo"> Elegant-Classics</a>
+        <button class="nav__menu__btn">☰</button>
+        <ul class="nav__links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button class="btn">Get Started</button>
+    </header>
+
+    <div class="container">
+        <div class="sidebar">
+            <h2>Popular Searches</h2>
+            <ul>
+                <li><a href="#classic-cars">Classic Cars</a></li>
+                <li><a href="#sports-cars">Sports Cars</a></li>
+                <li><a href="#luxury-cars">Luxury Cars</a></li>
+            </ul>
+        </div>
+
+        <div class="main-content">
+            <div class="section__header">Gallery</div>
+            <div class="carousel">
+                <button id="prev-btn">‹</button>
+                <div class="carousel-images">
+                    <img src="car1.jpg" alt="Car 1">
+                    <img src="car2.jpg" alt="Car 2">
+                    <img src="car3.jpg" alt="Car 3">
+                    <img src="car4.jpg" alt="Car 4">
+                    <img src="car5.jpg" alt="Car 5">
+                </div>
+                <button id="next-btn">›</button>
+            </div>
+            <div class="gallery">
+                <div class="car fade-in">
+                    <img src="car1.jpg" alt="Car 1">
+                    <div class="car-details">
+                        <h2>Classic Car 1</h2>
+                        <p>Price: <span class="price">₹5,00,000</span></p>
+                        <p>Description of the car.</p>
+                    </div>
+                </div>
+                <div class="car fade-in">
+                    <img src="car2.jpg" alt="Car 2">
+                    <div class="car-details">
+                        <h2>Classic Car 2</h2>
+                        <p>Price: <span class="price">₹6,00,000</span></p>
+                        <p>Description of the car.</p>
+                    </div>
+                </div>
+                <div class="car fade-in">
+                    <img src="car3.jpg" alt="Car 3">
+                    <div class="car-details">
+                        <h2>Classic Car 3</h2>
+                        <p>Price: <span class="price">₹7,00,000</span></p>
+                        <p>Description of the car.</p>
+                    </div>
+                </div>
+                <div class="car fade-in">
+                    <img src="car4.jpg" alt="Car 4">
+                    <div class="car-details">
+                        <h2>Classic Car 4</h2>
+                        <p>Price: <span class="price">₹8,00,000</span></p>
+                        <p>Description of the car.</p>
+                    </div>
+                </div>
+                <div class="car fade-in">
+                    <img src="car5.jpg" alt="Car 5">
+                    <div class="car-details">
+                        <h2>Classic Car 5</h2>
+                        <p>Price: <span class="price">₹9,00,000</span></p>
+                        <p>Description of the car.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <h4>Elegant-Classics</h4>
+        <ul class="footer__links">
+            <li><a href="#terms">Terms of Service</a></li>
+            <li><a href="#privacy">Privacy Policy</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+        </ul>
+        <div class="footer__bar">
+            <ul class="footer__socials">
+                <li><a href="#"><i class="ri-facebook-fill"></i></a></li>
+                <li><a href="#"><i class="ri-twitter-fill"></i></a></li>
+                <li><a href="#"><i class="ri-instagram-fill"></i></a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <div id="scroll-indicator" class="scroll-indicator"></div>
+
+    <script>
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Lightbox Functionality
+        const lightbox = document.createElement('div');
+        lightbox.style.position = 'fixed';
+        lightbox.style.top = '0';
+        lightbox.style.left = '0';
+        lightbox.style.width = '100%';
+        lightbox.style.height = '100%';
+        lightbox.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+        lightbox.style.display = 'none';
+        lightbox.style.alignItems = 'center';
+        lightbox.style.justifyContent = 'center';
+        lightbox.style.zIndex = '1000';
+        lightbox.innerHTML = '<img id="lightbox-image" style="max-width: 90%; max-height: 90%;" />';
+        document.body.appendChild(lightbox);
+
+        document.querySelectorAll('.car img').forEach(img => {
+            img.addEventListener('click', function() {
+                document.getElementById('lightbox-image').src = this.src;
+                lightbox.style.display = 'flex';
+            });
+        });
+
+        lightbox.addEventListener('click', function() {
+            lightbox.style.display = 'none';
+        });
+
+        // Carousel Functionality
+        let currentIndex = 0;
+        const images = document.querySelectorAll('.carousel-images img');
+        const totalImages = images.length;
+
+        function showImage(index) {
+            const offset = -index * 100;
+            document.querySelector('.carousel-images').style.transform = `translateX(${offset}%)`;
+        }
+
+        document.getElementById('prev-btn').addEventListener('click', function() {
+            currentIndex = (currentIndex === 0) ? totalImages - 1 : currentIndex - 1;
+            showImage(currentIndex);
+        });
+
+        document.getElementById('next-btn').addEventListener('click', function() {
+            currentIndex = (currentIndex === totalImages - 1) ? 0 : currentIndex + 1;
+            showImage(currentIndex);
+        });
+
+        // Fade-in effect for gallery items
+        document.addEventListener('DOMContentLoaded', () => {
+            const cars = document.querySelectorAll('.car');
+            cars.forEach((car, index) => {
+                setTimeout(() => {
+                    car.classList.add('fade-in');
+                }, index * 300);
+            });
+        });
+
+        // Scroll Indicator
+        window.addEventListener('scroll', () => {
+            const scrollIndicator = document.getElementById('scroll-indicator');
+            const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPosition = window.scrollY;
+            const scrollPercentage = (scrollPosition / scrollHeight) * 100;
+            scrollIndicator.style.width = `${scrollPercentage}%`;
+        });
+    </script>
+</body>
+</html>
